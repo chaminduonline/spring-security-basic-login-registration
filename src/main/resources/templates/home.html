@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h2 th:text="${'Hello '+user.username}"></h2>
+<a th:href="@{/logout}">Log Out</a>|
+<a th:href="@{/logout}">Add</a>
+<hr>
+<table>
+    <tr>
+        <td>#</td>
+        <td>username</td>
+        <td>display name</td>
+        <td>status</td>
+    </tr>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.userName}"></td>
+        <td th:text="${user.displayName}"></td>
+        <td th:text="${user.enable ? 'active':'inactive'}"></td>
+        <td><a th:href="@{/edit/{id}(id=${user.id})}">edit</a> </td>
+    </tr>
+</table>
+</body>
+</html>
